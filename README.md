@@ -4,7 +4,7 @@
 使用小智官方给的示例代码，结合mcp_proxy,实现小智官方服务器和home assistant的mcp server打通
 
 
-###参数
+### 参数
 XIAOZHI_MCP_ENDPOINT：你的小智 MCP 接入点
 HA_MCP_ENDPOINT：你的 HA MCP SERVER 地址
 API_ACCESS_TOKEN：你的长效 API 令牌
@@ -19,7 +19,7 @@ API_ACCESS_TOKEN：你的长效 API 令牌
     * 创建**长期访问令牌**。
 
 
-###docker运行
+### docker运行
 ```bash
 docker run -d --name mcp_ha_xiaozhi \
 -e XIAOZHI_MCP_ENDPOINT="你的小智MCP接入点" \
