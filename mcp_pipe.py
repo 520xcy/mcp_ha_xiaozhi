@@ -23,8 +23,12 @@ import random
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),      # 输出到控制台
+        logging.FileHandler('app.log')  # 新增：保存到本地文件
+    ]
 )
 logger = logging.getLogger('MCP_PIPE')
 
@@ -104,7 +108,7 @@ async def pipe_websocket_to_process(websocket, process):
         while True:
             # Read message from WebSocket
             message = await websocket.recv()
-            logger.debug(f"<< {message[:120]}...")
+            logger.debug(f"XZ<<HA {message}")
 
             # Write to process stdin (in text mode)
             if isinstance(message, bytes):
@@ -133,7 +137,7 @@ async def pipe_process_to_websocket(process, websocket):
                 break
 
             # Send data to WebSocket
-            logger.debug(f">> {data[:120]}...")
+            logger.debug(f"HA>>XZ {data}")
             # In text mode, data is already a string, no need to decode
             await websocket.send(data)
     except Exception as e:
