@@ -108,7 +108,7 @@ async def pipe_websocket_to_process(websocket, process):
         while True:
             # Read message from WebSocket
             message = await websocket.recv()
-            logger.debug(f"XZ<<HA {message}")
+            logger.debug(f"HA<<XZ {message}")
 
             # Write to process stdin (in text mode)
             if isinstance(message, bytes):
